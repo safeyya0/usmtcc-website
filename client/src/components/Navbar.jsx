@@ -24,17 +24,17 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'glass py-3' : 'bg-transparent py-5'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-secondary to-secondary-light flex items-center justify-center text-dark text-xl font-bold group-hover:scale-110 transition-transform">
+            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#1B5E20] to-[#2E7D32] flex items-center justify-center text-white text-xl font-bold group-hover:scale-110 transition-transform">
               🎾
             </div>
             <div>
-              <span className="font-display text-2xl font-bold text-white">USM/TCC</span>
-              <p className="text-xs text-secondary">Tennis Club Casablanca</p>
+              <span className="font-display text-2xl font-bold text-[#1B5E20]">USM/TCC</span>
+              <p className="text-xs text-[#2E7D32]">Tennis Club Casablanca</p>
             </div>
           </Link>
 
@@ -45,14 +45,14 @@ export default function Navbar() {
                 key={link.path}
                 to={link.path}
                 className={`relative text-sm font-medium transition-colors ${
-                  location.pathname === link.path ? 'text-secondary' : 'text-gray-300 hover:text-white'
+                  location.pathname === link.path ? 'text-[#1B5E20]' : 'text-gray-600 hover:text-[#1B5E20]'
                 }`}
               >
                 {link.label}
                 {location.pathname === link.path && (
                   <motion.div
                     layoutId="underline"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-secondary"
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#1B5E20]"
                   />
                 )}
               </Link>
@@ -61,7 +61,7 @@ export default function Navbar() {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Link to="/booking" className="btn-gold text-sm">
+            <Link to="/booking" className="btn-green text-sm">
               Réserver un Court
             </Link>
           </div>
@@ -69,7 +69,7 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-white p-2"
+            className="md:hidden text-[#1B5E20] p-2"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isMobileMenuOpen ? (
@@ -90,20 +90,20 @@ export default function Navbar() {
               exit={{ opacity: 0, height: 0 }}
               className="md:hidden mt-4 pb-4"
             >
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-4 bg-white/95 backdrop-blur-md p-4 rounded-2xl">
                 {navLinks.map((link) => (
                   <Link
                     key={link.path}
                     to={link.path}
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={`text-lg font-medium ${
-                      location.pathname === link.path ? 'text-secondary' : 'text-gray-300'
+                      location.pathname === link.path ? 'text-[#1B5E20]' : 'text-gray-600'
                     }`}
                   >
                     {link.label}
                   </Link>
                 ))}
-                <Link to="/booking" className="btn-gold text-center mt-2">
+                <Link to="/booking" className="btn-green text-center mt-2">
                   Réserver
                 </Link>
               </div>
